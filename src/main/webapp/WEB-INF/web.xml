@@ -44,5 +44,16 @@
 		<filter-name>encoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<!-- Rest방식 개발시 get과 post만 적용하는 브라우저의 경우
+		x-HTTP-Method-Override를 이용해서 post방식으로 전송후 추가적인 정보를 이용한다 -->
+	<filter>
+		<filter-name>hiddenHttpMethodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>hiddenHttpMethodFilter</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
 
 </web-app>
