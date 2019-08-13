@@ -14,12 +14,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jh.service.BoardService;
 import com.jh.vo.BoardVO;
-import com.jh.vo.Criteria;
 import com.jh.vo.PageMaker;
 import com.jh.vo.SearchCriteria;
 
 @Controller
-@RequestMapping("/sboard/*")
+@RequestMapping("/sboard")
 public class SearchBoardController {
 	
 	/*

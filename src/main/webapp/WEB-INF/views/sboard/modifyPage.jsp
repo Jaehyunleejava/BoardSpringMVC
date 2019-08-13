@@ -29,6 +29,8 @@
 					
 						<input type="hidden" name="page" value="${cri.page}">
 						<input type="hidden" name="perPageNum" value="${cri.perPageNum}">
+						<input type="hidden" name="searchType" value="${cri.searchType}">
+						<input type="hidden" name="keyword" value="${cri.keyword}">
 						 
 						<div class="box-body">
 							<div class="form-group">
@@ -66,13 +68,6 @@
 	<!-- /.content -->
 	<%@include file="../include/footer.jsp" %>
 	
-	<form role="form" action="modifyPage" method="post">
-		<input type="hidden" name='page' value="${cri.page}">
-		<input type="hidden" name='perPageNum' value="${cri.perPageNum}">
-		<input type="hidden" name='searchType' value="${cri.searchType}">
-		<input type="hidden" name='keyword' value="${cri.keyword}">
-	</form>
-
 <script type="text/javascript">
 
 	$(document).ready(function(){
@@ -82,7 +77,8 @@
 		console.log(formObj);
 		
 		$(".btn-warning").on("click",function(){
-			self.location = "/sboard/list";
+			self.location = "/sboard/list?page=${cri.page}&perPageNum=${cri.perPageNum}"
+				+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
 		});
 		
 		$(".btn-primary").on("click",function(){
