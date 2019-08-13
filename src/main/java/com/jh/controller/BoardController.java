@@ -110,18 +110,9 @@ public class BoardController {
 		model.addAttribute("boardVO",service.read(bno));
 	}
 	
-	//게시글 수정 페이지에서 삭제시키는 메서드
-	@RequestMapping(value="/modify", method= RequestMethod.POST)
-	public String modifyPOST(BoardVO board, RedirectAttributes rttr) throws Exception{
-		
-		logger.info("mod post............");
-		
-		service.modify(board);
-		rttr.addFlashAttribute("msg", "SUCCESS");
-		
-		return "redirect:/board/listAll";
-	}
 	
+
+	//게시글 수정 페이지에서 삭제시키는 메서드
 	@RequestMapping(value="/modifyPage", method= RequestMethod.POST)
 	public String modifyPOST(BoardVO board, Criteria cri, RedirectAttributes rttr) throws Exception{
 		
@@ -131,7 +122,7 @@ public class BoardController {
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/board/listPage";
+		return "redirect:/sboard/list";
 	}
 	
 	//스프링 MVC의 컨트롤러는 특정 URL에 해당하는 메소드를 실행 할때, 파라미터의 타입을 보고, 해당 객체를 자동으로 생성해 낸다.

@@ -56,7 +56,7 @@
 	<select id="listCriteria" resultType="BoardVO">
 		<![CDATA[
 			select 
-				bno, title, content, writer, regdate, viewcnt
+				bno, title, content, writer, regdate, viewcnt, replycnt
 			from
 				tbl_board
 			where bno >0
@@ -64,6 +64,14 @@
 			limit #{pageStart}, #{perPageNum}
 		]]>
 	</select>
+
+	<update id="updateReplyCnt">
+		update tbl_board set replycnt = replycnt + #{amount} where bno = #{bno}
+	</update>
+	
+	<update id="updateViewCnt">
+		update tbl_board set viewCnt = viewCnt + 1 where bno = #{bno}
+	</update>
 	
 	<select id="countPaging" resultType="int">
 		<![CDATA[
@@ -124,4 +132,5 @@
 				</if>
 			</if>
 	</sql>
+	
 </mapper>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Main 게시판</title>
 <script type="text/javascript">
 	let result = '${msg}';
 	
@@ -29,7 +29,7 @@
 				<!-- general form elements -->
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">LIST ALL PAGE</h3>
+						<h3 class="box-title">검색창</h3>
 						<div class="body-box">
 							<select name="searchType">
 								<option value="n"
@@ -59,18 +59,18 @@
 					
 					<table class="table table-bordered">
 						<tr>
-							<th style="width: 10px">BNO</th>
-							<th>TITLE</th>
-							<th>WRITER</th>
-							<th>REGDATE</th>
-							<th style="width: 40px">VIEWCNT</th>
+							<th style="width: 10px">번호</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>등록일</th>
+							<th style="width: 70px">조회수</th>
 						</tr>
 						
 						<c:forEach items="${list}" var="boardVO">
 							<tr>
 								<td>${boardVO.bno}</td>
 								<td><a href="/sboard/readPage${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${boardVO.bno}">
-								${boardVO.title}</a></td>
+								${boardVO.title}<strong> [ ${boardVO.replycnt} ]</strong></a></td>
 								<td>${boardVO.writer}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${boardVO.regdate}" /></td>

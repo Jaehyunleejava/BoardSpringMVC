@@ -57,4 +57,12 @@ public class ReplyDAOImpl implements ReplyDAO {
 		
 		return session.selectOne(namespace+".count",bno);
 	}
+	
+	
+	//댓글이 삭제될 때 해당 게시물의 번호를 알아내는 기능
+	@Override
+	public int getBno(Integer rno) throws Exception {
+		
+		return session.selectOne(namespace+".getBno",rno);
+	}
 }

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 수정 페이지</title>
 </head>
 <body>
 
@@ -22,7 +22,7 @@
 				<!-- general form elements -->
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">READ BOARD</h3>
+						<h3 class="box-title">게시글 수정</h3>
 					</div>
 
 					<form role="form" action="modifyPage" method="post">
@@ -32,22 +32,22 @@
 						 
 						<div class="box-body">
 							<div class="form-group">
-								<label for="exampleInputEmail1">BNO</label> <input type="text"
+								<label for="exampleInputEmail1">게시물 번호</label> <input type="text"
 									name='bno' class="form-control" value="${boardVO.bno}"
 									readonly="readonly">
 							</div>
 							<div class="form-group">
-								<label for="exampleInputEamil1">Writer</label> <input
+								<label for="exampleInputEamil1">작성자</label> <input
 									type="text" name='writer' class="form-control"
 									value="${boardVO.writer}"
 									readonly="readonly">
 							</div>
 							<div class="form-group">
-								<label for="exampleInputEmail1">TITLE</label> <input type="text"
+								<label for="exampleInputEmail1">제목</label> <input type="text"
 									name='title' class="form-control" value="${boardVO.title}">
 							</div>
 							<div class="form-group">
-								<label for="exampleInputPassword1">Content</label>
+								<label for="exampleInputPassword1">내용</label>
 								<textarea class="form-control" name="content" rows="3">${boardVO.content}</textarea>
 							</div>
 						</div>
@@ -55,8 +55,8 @@
 					</form>
 
 				<div class="box-footer">
-					<button type="submit" class="btn btn-primary">Save</button>
-					<button type="submit" class="btn btn-warning">Cancel</button>
+					<button type="submit" class="btn btn-primary">저장</button>
+					<button type="submit" class="btn btn-warning">취소</button>
 				</div>
 			</div>
 			<!-- /.col(left) -->	
@@ -82,8 +82,7 @@
 		console.log(formObj);
 		
 		$(".btn-warning").on("click",function(){
-			self.location = "/board/listPage?page=${cri.page}&perPageNum=${cri.perPageNum}"
-					+"&searchType=${cri.searchType}&keyword=${cri.keyword}";
+			self.location = "/sboard/list";
 		});
 		
 		$(".btn-primary").on("click",function(){

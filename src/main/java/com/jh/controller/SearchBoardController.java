@@ -112,7 +112,7 @@ public class SearchBoardController {
 		
 		logger.info(rttr.toString());
 		
-		return "redirect:/board/listPage";
+		return "redirect:/sboard/list";
 	}
 	
 	@RequestMapping(value="/register", method = RequestMethod.GET)

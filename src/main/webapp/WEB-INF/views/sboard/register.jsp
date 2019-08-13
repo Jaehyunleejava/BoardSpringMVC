@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>등록 페이지</title>
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -16,26 +16,26 @@
 			<!-- general form elements -->
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">REGISTER BOARD</h3>
+						<h3 class="box-title">게시물 등록</h3>
 					</div>
 					<form role="form" method="post">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="exampleInputEmail1">Title</label> <input type="text"
+							<label for="exampleInputEmail1">제목</label> <input type="text"
 								name='title' class="form-control" placeholder="Enter Title">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputPassword1">Content</label>
+							<label for="exampleInputPassword1">내용</label>
 							<textarea class="form-control" name='content' rows="3"
 								placeholder="Enter..."></textarea>
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Writer</label> <input type="text"
+							<label for="exampleInputEmail1">작성자</label> <input type="text"
 								name='writer' class="form-control" placeholder="Enter Writer">
 						</div>
 					</div>
 					<div class="box-footer">
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button type="submit" class="btn btn-primary">제출</button>
 					</div>
 				</form>
 				</div>

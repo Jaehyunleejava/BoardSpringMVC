@@ -32,10 +32,12 @@
 	
 	<context:component-scan base-package="com.jh.*"></context:component-scan>
 	
+	<!-- 트랜잭션 매니저 설정 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
+	<!-- 어노테이션을 사용한 트랜잭션의 관리 가능 -->
 	<tx:annotation-driven/>
 	
 		<aop:config></aop:config> <!-- 이 설정은 XML 방식으로 AOP 기능을 설정할 때 사용, 이 예제는 애노테이션을 이용해서 설정 -->

@@ -39,4 +39,12 @@ public interface BoardDAO {
 	//검색하는 동적SQL 목록 개수
 	public int listSearchCount(SearchCriteria cri)throws Exception;
 	
+	//댓글의 숫자를 변경하는 메서드
+	public void updateReplyCnt(Integer bno, int amount)throws Exception;
+	
+	//게시물 조회수 증가 메서드
+	public void updateViewCnt(Integer bno) throws Exception;
+	
+	
+	
 }

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 상세 페이지</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 </head>
@@ -23,7 +23,7 @@
 				
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">READ BOARD</h3>
+						<h3 class="box-title">게시글 상세보기</h3>
 					</div>
 
 					<form role="form" action="modifyPage" method="post">
@@ -36,24 +36,24 @@
 
 					<div class="box-body">
 						<div class="form-group">
-							<label for="exampleInputEmail1">Title</label>
+							<label for="exampleInputEmail1">제목</label>
 							<input type="text" name="title" class="form-control" value="${boardVO.title}" readonly="readonly">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputPassword1">Content</label>
+							<label for="exampleInputPassword1">내용</label>
 							<textarea class="form-control" name="content" rows="3" readonly="readonly">${boardVO.content}</textarea>
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">writer</label>
+							<label for="exampleInputEmail1">작성자</label>
 							<input type="text" name="writer" class="form-control" value="${boardVO.writer}" readonly="readonly">
 						</div>
 					</div>
 					<!-- /.box-body -->
 					
 					<div class="dox-footer">
-						<button type="submit" class="btn btn-warning" id="modifyBtn">MODIFY</button>
-						<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
-						<button type="submit" class="btn btn-primary" id="listPageBtn">LIST PAGE</button>
+						<button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
+						<button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
+						<button type="submit" class="btn btn-primary" id="listPageBtn">목록</button>
 					</div>
 				</div>
 			</div>
@@ -64,17 +64,17 @@
 				
 				<div class="box box-success">
 					<div class="box-header">
-						<h3 class="box-title-">ADD NEW REPLY</h3>
+						<h3 class="box-title-">댓글 등록</h3>
 					</div>
 					<div class="box-body">
-						<label for="newReplyWriter">Writer</label>
-						<input class="form-control" type="text" placeholder="USER ID" id="newReplyWriter">
-						<label for="newReplyText">Reply text</label>
-						<input class="form-control" type="text" placeholder="REPLY TEXT" id="newReplyText">
+						<label for="newReplyWriter">작성자</label>
+						<input class="form-control" type="text" placeholder="유저 아이디를 입력하세요" id="newReplyWriter">
+						<label for="newReplyText">댓글 내용</label>
+						<input class="form-control" type="text" placeholder="댓글 내용을 입력하세요" id="newReplyText">
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer">
-						<button type="submit" class="btn btn-primary" id="replyAddBtn">ADD REPLY</button><!-- ADD REPLY 버튼과 LIST PAGE 버튼이 같은 클래스 속성을 이용하므로 이벤트 처리시 수정 필요할 듯 -->
+						<button type="submit" class="btn btn-primary" id="replyAddBtn">입력</button><!-- ADD REPLY 버튼과 LIST PAGE 버튼이 같은 클래스 속성을 이용하므로 이벤트 처리시 수정 필요할 듯 -->
 					</div>
 				</div>
 			</div>
@@ -83,7 +83,11 @@
 		<!-- The time line -->
 		<ul class="timeline">
 			<!-- timeline time label -->
-			<li class="time-label" id="repliesDiv"><span class="bg-green">Replies List</span></li>
+			<li class="time-label" id="repliesDiv">
+				<span class="bg-green">
+					댓글 보기 <small id='replycntSmall'> [ ${boardVO.replycnt} ]</small>
+				</span>
+			</li>
 		</ul>
 				
 		<div class="text-center">
@@ -107,9 +111,9 @@
 					<p><input type="text" id="replytext" class="form-control"></p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-info" id="replyModBtn" data-dismiss="modal">Modify</button>
-					<button type="button" class="btn btn-danger" id="replyDelBtn" data-dismiss="modal">Delete</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-info" id="replyModBtn" data-dismiss="modal">수정</button>
+					<button type="button" class="btn btn-danger" id="replyDelBtn" data-dismiss="modal">삭제</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 				</div>
 			</div>
 		</div>
@@ -156,7 +160,7 @@
 			<h3 class="timeline-header"><strong>{{rno}}</strong> -{{replyer}}</h3>
 			<div class="timeline-body">{{replytext}}</div>
 			<div class="timeline-footer">
-				<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
+				<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">수정</a>
 			</div>
 		</div>
 	</li>
@@ -188,6 +192,9 @@
 		$.getJSON(pageInfo, function(data) {
 			printData(data.list, $("#repliesDiv"), $("#template"));
 			printPaging(data.pageMaker, $(".pagination"));
+			
+			$("#modifyModal").modal('hide');
+			$("#replycntSmall").html("[ "+data.pageMaker.totalCount +" ]");
 		});
 	}
 	
