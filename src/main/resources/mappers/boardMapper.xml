@@ -133,4 +133,21 @@
 			</if>
 	</sql>
 	
+	<!-- mysql의 경우 tbl_board에 저장된 pk를 tbl_attach에 bno로 저장하기 위해(fk)
+	즉, 바로 직전에 생성된 PK를 알아내기 위해서  -->
+	<insert id="addAttach">
+		insert into tbl_attach(fullName, bno) values (#{fullName}, LAST_INSERT_ID())
+	</insert>
+	
+	<select id="getAttach" resultType="string">
+		select fullName from tbl_attach where bno = #{bno} order by regDate
+	</select>
+	
+	<delete id="deleteAttach">
+		delete from tbl_attach where bno = #{bno}
+	</delete>
+	
+	<insert id="replaceAttach">
+		insert into tbl_attach(fullName, bno) values (#{fullName},#{bno})
+	</insert>
 </mapper>

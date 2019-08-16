@@ -30,7 +30,9 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<context:component-scan base-package="com.jh.*"></context:component-scan>
+	<context:component-scan base-package="com.jh.dao"></context:component-scan>
+	<context:component-scan base-package="com.jh.service"></context:component-scan>
+	<context:component-scan base-package="com.jh.aop"></context:component-scan>
 	
 	<!-- 트랜잭션 매니저 설정 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

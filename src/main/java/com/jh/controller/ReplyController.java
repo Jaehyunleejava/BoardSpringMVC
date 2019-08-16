@@ -31,6 +31,8 @@ public class ReplyController {
 	@RequestMapping(value="", method= RequestMethod.POST)
 	public ResponseEntity<String> register(@RequestBody ReplyVO vo){
 		
+		//RequestBody의 경우 JSON으로 전송된 데이터를 ReplyVO 타입의 객체로 변환해 주는 역활,
+		//이때의 데이터는 일반적 데이터가 아닌 JSON으로 구성된 문자열 데이터이다.
 		ResponseEntity<String> entity = null;
 		try {
 			service.addReply(vo);

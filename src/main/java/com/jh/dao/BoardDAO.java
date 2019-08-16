@@ -45,6 +45,15 @@ public interface BoardDAO {
 	//게시물 조회수 증가 메서드
 	public void updateViewCnt(Integer bno) throws Exception;
 	
+	//첨부파일 정보를 저장하는 기능
+	public void addAttach(String fullName)throws Exception;
 	
+	//특정 게시물의 첨부파일을 시간 순서대로 가져오는 기능
+	public List<String> getAttach(Integer bno)throws Exception;
 	
+	//게시물 수정시 업로드한 파일 삭제하는 기능
+	public void delAttach(Integer bno)throws Exception;
+	
+	//게시물 수정시 업로드한 파일 수정하는 기능
+	public void replaceAttach(String fullName, Integer bno)throws Exception;
 }
