@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page session="false" %>
 
 <!DOCTYPE html>
 <html>
@@ -61,14 +60,15 @@
 						</div>
 						
 						<ul class="mailbox-attachments clearfix uploadedList"></ul>
-						
+
 					</div>
 					<!-- /.box-body -->
-					
-					<div class="dox-footer">
-						<button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
-						<button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
-						<button type="submit" class="btn btn-primary" id="listPageBtn">목록</button>
+					<div class="box-footer">
+						<c:if test="${login.uid == boardVO.writer}">
+							<button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
+							<button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
+						</c:if>
+							<button type="submit" class="btn btn-primary" id="listPageBtn">목록</button>
 					</div>
 				</div>
 			</div>
@@ -81,16 +81,25 @@
 					<div class="box-header">
 						<h3 class="box-title-">댓글 등록</h3>
 					</div>
-					<div class="box-body">
-						<label for="newReplyWriter">작성자</label>
-						<input class="form-control" type="text" placeholder="유저 아이디를 입력하세요" id="newReplyWriter">
-						<label for="newReplyText">댓글 내용</label>
-						<input class="form-control" type="text" placeholder="댓글 내용을 입력하세요" id="newReplyText">
-					</div>
-					<!-- /.box-body -->
-					<div class="box-footer">
-						<button type="submit" class="btn btn-primary" id="replyAddBtn">입력</button><!-- ADD REPLY 버튼과 LIST PAGE 버튼이 같은 클래스 속성을 이용하므로 이벤트 처리시 수정 필요할 듯 -->
-					</div>
+					<c:if test="${not empty login}">
+						<div class="box-body">
+							<label for="newReplyWriter">작성자</label>
+							<input class="form-control" type="text" value="${login.uid}" 
+								id="newReplyWriter" readonly>
+							<label for="newReplyText">댓글 내용</label>
+							<input class="form-control" type="text" placeholder="댓글 내용을 입력하세요" id="newReplyText">
+						</div>
+						<!-- /.box-body -->
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary" id="replyAddBtn">입력</button><!-- ADD REPLY 버튼과 LIST PAGE 버튼이 같은 클래스 속성을 이용하므로 이벤트 처리시 수정 필요할 듯 -->
+						</div>
+					</c:if>
+					<c:if test="${empty login}">
+						<div class="box-body">
+							<div><a href="javascript:goLogin();">로그인을 해주세요</a></div>
+						</div>
+					</c:if>
+
 				</div>
 			</div>
 		</div>
@@ -189,8 +198,10 @@
 			</span>
 			<h3 class="timeline-header"><strong>{{rno}}</strong> -{{replyer}}</h3>
 			<div class="timeline-body">{{replytext}}</div>
+			{{#eqReplyer replyer}}
 			<div class="timeline-footer">
-				<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">수정</a>
+				<a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
+				{{/eqReplyer}}
 			</div>
 		</div>
 	</li>
@@ -206,6 +217,15 @@
 		var hours = dateObj.getHours();
 		var minutes = dateObj.getMinutes();
 		return year + "/" + month + "/" + date + " " + hours + ":" + minutes;
+	});
+	
+	Handlebars.registerHelper("eqReplyer", function(replyer, block) {
+		var accum = "";
+		if(replyer == "${login.uid}") {
+			accum += block.fn();
+		}
+		
+		return accum;
 	});
 	
 	function printData(replyArr, target, templateObject) {

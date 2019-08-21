@@ -71,7 +71,7 @@ public class SearchBoardController {
 	public void read(@RequestParam("bno")int bno,
 			@ModelAttribute("cri")SearchCriteria cri, Model model) throws Exception{
 		
-		model.addAttribute(service.read(bno));
+		model.addAttribute("boardVO",service.read(bno));
 	}
 	
 	//상세보기에서 삭제

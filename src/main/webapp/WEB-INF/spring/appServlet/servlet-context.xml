@@ -30,6 +30,35 @@
 		<beans:constructor-arg value="C:\Users\LG\Documents\uploadFiles"></beans:constructor-arg>
 	</beans:bean>
 	
+	<!-- 스프링에서 SampleInterceptor를 인식하기위해 작성 -->
+	<beans:bean id="sampleInterceptor" class="com.jh.interceptor.SampleInterceptor"></beans:bean>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/doA"></mapping>
+			<mapping path="/doB"></mapping>
+			<beans:ref bean="sampleInterceptor"></beans:ref>
+		</interceptor>
+	</interceptors>
+	
+	<beans:bean id="authInterceptor" class="com.jh.interceptor.AuthInterceptor"></beans:bean>
+	
+	<beans:bean id="loginInterceptor" class="com.jh.interceptor.LoginInterceptor"></beans:bean>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/loginPost"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/sboard/register"/>
+			<mapping path="/sboard/modifyPage"/>
+			<mapping path="/sboard/removePage"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 	<context:component-scan base-package="com.jh.controller" />
 	
 	

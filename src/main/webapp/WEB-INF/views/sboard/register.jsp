@@ -42,7 +42,7 @@
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">작성자</label> <input type="text"
-								name='writer' class="form-control" placeholder="Enter Writer">
+								name='writer' class="form-control" value='${login.uid}' readonly>
 						</div>
 						<div class="form-group">
 								<label for="exampleInputEmail1">파일 첨부 창</label>
@@ -127,9 +127,10 @@
 			that.append(str);
 			that.get(0).submit();
 		});
-		
-		
+
 	</script>
+	
+
 	
 	<%@include file="../include/footer.jsp"%>
 
