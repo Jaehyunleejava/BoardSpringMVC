@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
    
 <!DOCTYPE html>
 <html>
@@ -50,6 +52,7 @@
             <span class="icon-bar"></span>
           </a>
         </nav>
+
       </header>
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
@@ -69,7 +72,7 @@
           <ul class="sidebar-menu">
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-dashboard"></i> <span>게시물관리</span> <i class="fa fa-angle-left pull-right"></i>
+                <span>게시물관리</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="/sboard/register"><i class="fa fa-circle-o"></i> 게시물 작성</a></li>
@@ -85,7 +88,4 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>Board Project</h1>        
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i></a></li>
-          </ol>
         </section>

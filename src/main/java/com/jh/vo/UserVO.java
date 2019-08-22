@@ -31,4 +31,10 @@ public class UserVO {
 		this.upoint = upoint;
 	}
 	
+	@Override
+	public String toString() {
+		
+		return "uid: "+ this.getUid() + " upw: "+ this.getUpw() + " uname: "+ this.getUname();
+	}
+	
 }
