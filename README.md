@@ -9,16 +9,16 @@
 5. 사용언어 및 라이브러리: Java JSP Javascript JSTL jQuery
 
 #### 메인화면
-<img src="./ReadMeImage/메인화면.png">
+![Main](./ReadMeImage/메인화면.png)
 
 #### 게시글목록
-![](./ReadMeImage/게시글목록.png)
+![list](./ReadMeImage/게시글목록.png)
 
 #### 게시글검색기능
-![](./ReadMeImage/게시글상세보기.png)
+![search](./ReadMeImage/게시글상세보기.png)
 
 #### 게시글상세보기
-![](./ReadMeImage/게시글상세보기.png)
+![detail](./ReadMeImage/게시글상세보기.png)
 
 ## 주요기능
 - 댓글처리 -> RESTful 방식으로 Ajax 댓글 처리
